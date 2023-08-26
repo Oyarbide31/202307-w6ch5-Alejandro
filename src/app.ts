@@ -1,29 +1,19 @@
+import bodyParser from 'body-parser';
 import cors from 'cors';
-import createDebug from 'debug';
-import express, { NextFunction, Request, Response } from 'express';
-import morgan from 'morgan';
-import { taskRouter } from './router/task.router.js';
+import express from 'express'; // SErvidor de petciones HTTP
+import escaladoresRouter from './routers/escaladores.js';
 
-export const app = express(); // Llamamos a express.
+export const app = express();
 
-const debug = createDebug('V25:App'); // El V25 puede ser el que sea.
-
-app.use(morgan('dev'));
+//
+// app.use(morgan('deve'));
 app.use(cors());
+app.use(bodyParser.json());
 
-app.use(express.json());
-app.use(express.static('public'));
-// Middleware
+app.use(escaladoresRouter);
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  debug('Soy un Middleware');
-  next();
+app.get('/', (request, response) => {
+  // Request: se usa para obtener parámetros (peticion)
+
+  response.send('Hola Mundo');
 });
-
-app.get('/', (req: Request, res: Response) => {
-  debug('Hola Mundo');
-  res.write('<h1>Holaaaaa Kubo</h1>');
-  res.end();
-});
-
-app.use('/tasks', taskRouter); // Importamos el taskRouter de la caprtera router.

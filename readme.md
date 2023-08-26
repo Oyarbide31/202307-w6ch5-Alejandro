@@ -7,7 +7,8 @@ La API REST debe tener los siguientes endpoints:
 
 [GET] /things -> devuelve el array de cosas que ya sé
 
-[GET] /things/:idThing -> devuelve una cosa que ya sé
+[GET] /things/:idThing ->
+devuelve una cosa que ya sé
 
 [DELETE] /things/:idThing -> borra una cosa que ya sé
 
