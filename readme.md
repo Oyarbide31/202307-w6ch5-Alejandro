@@ -1,84 +1,35 @@
-# Backend Node: TS - Eslint -Jest
+# Week 6 - Challenge 5 (FRONT)
 
-## Setup
+API REST Things I already know / Lo que querais
+Crea una API REST que se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.
 
-- npm init
-- git init
-- .editorconfig
-- .gitignore
-- TS
+La API REST debe tener los siguientes endpoints:
 
-  ```shell
-  npm i -D typescript @types/node
-  ```
+[GET] /things -> devuelve el array de cosas que ya sé
 
-tsconfig
+[GET] /things/:idThing -> devuelve una cosa que ya sé
 
-  ```shell
-  npx tsc --init
-  ```
+[DELETE] /things/:idThing -> borra una cosa que ya sé
 
-ESModule Config: package.json
+[POST] /things -> crea una cosa que ya sé (la recibe en el body)
 
-```json
-  "type": "module"
-```
+[PATCH] /things -> modifica una cosa que ya sé (la recibe en el body)
 
+Usamos express con las capas:
 
+app
+router
+controller
+repo
+AÑADIMOS un front con REDUX testado
 
-- ESLint
+Lista de 'things'
 
-```shell
-npx eslint --init
-npm i -D eslint-config-prettier
-```
+Añadir 'thing'
 
-Eslint config
+Borrar 'thing'
 
-```json
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true,
-    "jest": true
-  },
-  "extends": ["xo", "prettier"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint"],
-  "rules": {}
-}
-```
+Editar 'thing'
 
-Prettier config: package.json
-
-```json
-  "prettier": {
-    "singleQuote": true
-  }
-```
-
-
-- Jest
-
-```shell
-npm i -D jest ts-jest @types/jest jest-ts-webcompat-resolver
-```
-
-jest config
-
-```js
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-export default {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testPathIgnorePatterns: ['dist'],
-  resolver: 'jest-ts-webcompat-resolver',
-  collectCoverageFrom: ['src/**/*.ts'],
-  coveragePathIgnorePatterns: ['index.ts'],
-};
-```
+Página de detalle
+🥒
