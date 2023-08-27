@@ -14,7 +14,7 @@ devuelve una cosa que ya sé
 
 [POST] /things -> crea una cosa que ya sé (la recibe en el body)
 
-[PATCH] /things -> modifica una cosa que ya sé (la recibe en el body)
+[PATCH] /things -> modifica una cosa que ya sé (la recibe en el body) \*
 
 Usamos express con las capas:
 

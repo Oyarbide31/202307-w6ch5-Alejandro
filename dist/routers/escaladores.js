@@ -32,13 +32,30 @@ escaladoresRouter.get('/escaladores/:id', (request, response) => {
 escaladoresRouter.delete('/escaladores/:id', (request, response) => {
     const { id } = request.params;
     let borrado = false;
-    const escaladorIndex = escaladores.Escaladores.findIndex((escaladorEnArray) => escaladorEnArray.id === parseInt(id, 10));
-    if (escaladorIndex !== -1) {
-        // TODO: borrar escalador
-        borrado = true;
-    }
+    const newArrayEscaladores = escaladores.Escaladores.filter((escaladorEnArray) => escaladorEnArray.id !== parseInt(id, 10));
+    escaladores.Escaladores = newArrayEscaladores;
+    borrado = true;
     response.send({
         borrado,
+    });
+});
+escaladoresRouter.patch('/escaladores/:id', (request, response) => {
+    const { id } = request.params;
+    const escaladorIndex = escaladores.Escaladores.findIndex((escalador) => escalador.id === parseInt(id, 10));
+    if (escaladorIndex === -1) {
+        response.sendStatus(404).send({
+            update: false,
+        });
+        return;
+    }
+    const escaladorFromRequest = request.body;
+    const oldEscalador = escaladores.Escaladores[escaladorIndex];
+    escaladores.Escaladores[escaladorIndex] = {
+        ...oldEscalador,
+        ...escaladorFromRequest,
+    };
+    response.send({
+        update: true,
     });
 });
 export default escaladoresRouter;
